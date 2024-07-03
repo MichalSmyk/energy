@@ -313,16 +313,19 @@ const fulfilmentStatus = `${openOrderNumber}/${totalOrders}`
   for (const lineItem of order.lineItems.edges) {
       // Copy all the existing data
   const values = [
-    fulNumber,
-    order.name,
-    order.email,
-    order.displayFinancialStatus,
-    order.createdAt,
-    fulfilmentStatus,
-    openedAt,
-    order.customer.emailMarketingConsent.marketingState,
-    order.currencyCode,
-    order.subtotalPrice,
+    '', //fulfilment date
+    '', //fulfilled ?
+    '', //Name 
+    fulNumber, // order number 
+    // order.name,
+    order.email, //email
+    order.displayFinancialStatus, //financial status
+    order.createdAt, //paid at 
+    fulfilmentStatus, // fulfilment status
+    openedAt, //fulfilled at
+    order.customer.emailMarketingConsent.marketingState, // accepts marketing
+    order.currencyCode, //currency
+    order.subtotalPrice, 
     order.shippingLine.originalPriceSet.shopMoney.amount,
     order.totalTax,
     order.totalPrice,
