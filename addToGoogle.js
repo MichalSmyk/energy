@@ -50,7 +50,7 @@ async function appendDataToSheet(data) {
       order.totalDiscounts,
       'i guess all will be the same for all orders ?',
       order.createdAt,
-      'is it one per person ?' ,
+      order.lineItems.edges[0] ? order.lineItems.edges[0].node.quantity : '',
       order.lineItems.edges[0] ? order.lineItems.edges[0].node.variant.title : '', // Correctly access the first lineItem's variant title
     order.totalPrice,
     'what is that ?',
