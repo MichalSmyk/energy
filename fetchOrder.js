@@ -133,6 +133,7 @@ getFulfillments: async (req, res) => {
     await delay(1000);  // Wait for 1 second
   }
 
+  console.log("orders: ", orders);
   res.sendStatus(200);
   await appendDataToSheet(orders);
 }
