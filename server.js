@@ -15,7 +15,6 @@ app.use('/getOrders', openOrdersRouter)
 
 //run it every 4 hours 0 */4 * * *
 // cron.schedule('*/2 * * * *', function() {
-//     console.log('Running a task every 4 hours');
 //     fetch(`http://localhost:${port}/getOrders`)
 //         .then(res => res.text())
 //         .then(body => console.log(body))
