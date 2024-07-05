@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 
 app.use('/getOrders', openOrdersRouter)
 
-//run it every 4 hours 0 */4 * * *
-// cron.schedule('*/2 * * * *', function() {
+//run it every day at 7 am and 3 pm 
+// cron.schedule('0 7,15 * * *', function() {
 //     fetch(`http://localhost:${port}/getOrders`)
 //         .then(res => res.text())
 //         .then(body => console.log(body))

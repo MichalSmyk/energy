@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 async function appendDataToSheet(data) {
-    console.log("data in google", data);
+    // console.log("data in google", data);
     // console.log(JSON.stringify(data.order.lineItems))
     const client = new google.auth.JWT(
       keys.client_email,
@@ -40,7 +40,7 @@ async function appendDataToSheet(data) {
             for (let i = 1; i <= 6; i++) {
                 const fulfilmentNumber = `${order.name}.${i}`;
                 const createdAt = moment(order.createdAt);
-                const fulfilledAt = i === 1 ? createdAt.format() : createdAt.add(i - 1, 'months').format();
+                const fulfilledAt = i === 1 ? createdAt.format('YYYY-MM-DD') : createdAt.add(i - 1, 'months').format('YYYY-MM-DD');
                 // Construct row data here based on the order
                 const row = [
                
@@ -54,21 +54,21 @@ async function appendDataToSheet(data) {
                     order.customer.emailMarketingConsent.marketingState,
                     order.currencyCode,
                     order.subtotalPrice,
-                    'is shipping free as well ? ',
+                    '',
                     order.totalTax,
                     order.totalPrice,
                     order.discountCode,
                     order.totalDiscounts,
-                    'i guess it will be the same for all orders ?',
+                    '',
                     order.createdAt,
                     order.lineItems.edges[0] ? order.lineItems.edges[0].node.quantity : '',
-                    order.lineItems.edges[0] ? order.lineItems.edges[0].node.variant.title : '', // Correctly access the first lineItem's variant title
-                  order.totalPrice,
-                  'what is that ?',
+                    order.lineItems.edges[0] ? order.lineItems.edges[0].node.variant.title : '', 
+                    order.lineItems.edges[0] ? order.lineItems.edges[0].node.variant.price : '',
+                  '',
                   order.lineItems.edges[0] ? order.lineItems.edges[0].node.variant.sku : '',
-                  'is it always true ?',
-                  'that is always false, coffe is not taxable right ?',
-                  '??  ', 
+                  'TRUE',
+                  'FALSE',
+                  `${i}/6`, 
                   order.billingAddress ? order.billingAddress.name : '',
                   (order.billingAddress?.address1 ?? '') + '\n' + (order.billingAddress?.address2 ?? ''),
                   order.billingAddress ? order.billingAddress.address1 : '',
@@ -90,9 +90,12 @@ async function appendDataToSheet(data) {
                   order.shippingAddress ? order.shippingAddress.country : '',
                   order.shippingAddress ? order.shippingAddress.phone : '',
                   order.customer ? order.customer.note : '',
-
-                  
-                    // Repeat for other nested objects/fields
+                  '',
+                  '',
+                  '',
+                  '',
+                  '',
+                  'HCR',                  
                   ]
                 rows.push(row);
             }
