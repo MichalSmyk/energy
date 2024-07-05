@@ -14,12 +14,12 @@ app.get('/', (req, res) => {
 app.use('/getOrders', openOrdersRouter)
 
 //run it every day at 7 am and 3 pm 
-// cron.schedule('0 7,15 * * *', function() {
-//     fetch(`http://localhost:${port}/getOrders`)
-//         .then(res => res.text())
-//         .then(body => console.log(body))
-//         .catch(err => console.error(err));
-// });
+cron.schedule('0 7,15 * * *', function() {
+    fetch(`http://localhost:${port}/getOrders`)
+        .then(res => res.text())
+        .then(body => console.log(body))
+        .catch(err => console.error(err));
+});
 
 
 app.listen(port, () => {
