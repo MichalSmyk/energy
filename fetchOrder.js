@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const  dotenv = require('dotenv');
 const { response } = require('express');
 const appendDataToSheet = require('./addToGoogle.js');
@@ -134,7 +134,8 @@ getFulfillments: async (req, res) => {
   }
 
   console.log("orders: ", orders);
-  res.sendStatus(200);
+//   res.sendStatus(200);
+res.send(orders)
   await appendDataToSheet(orders);
 }
 

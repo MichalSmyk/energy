@@ -1,4 +1,6 @@
 const express = require('express');
+const cron = require('node-cron');
+// const fetch = require('node-fetch');
 
 const app = express();
 const port = 3008;
@@ -10,6 +12,15 @@ app.get('/', (req, res) => {
 });
 
 app.use('/getOrders', openOrdersRouter)
+
+//run it every 4 hours 0 */4 * * *
+// cron.schedule('*/2 * * * *', function() {
+//     console.log('Running a task every 4 hours');
+//     fetch(`http://localhost:${port}/getOrders`)
+//         .then(res => res.text())
+//         .then(body => console.log(body))
+//         .catch(err => console.error(err));
+// });
 
 
 app.listen(port, () => {

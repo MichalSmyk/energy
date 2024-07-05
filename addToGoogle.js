@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 async function appendDataToSheet(data) {
-    // console.log("data in google", JSON.stringify(data));
+    console.log("data in google", data);
     // console.log(JSON.stringify(data.order.lineItems))
     const client = new google.auth.JWT(
       keys.client_email,
@@ -49,7 +49,7 @@ async function appendDataToSheet(data) {
                     order.email,
                     order.displayFinancialStatus,
                     order.createdAt,
-                    '', 
+                    `${i}/6`,
                    fulfilledAt,
                     order.customer.emailMarketingConsent.marketingState,
                     order.currencyCode,
@@ -70,7 +70,7 @@ async function appendDataToSheet(data) {
                   'that is always false, coffe is not taxable right ?',
                   '??  ', 
                   order.billingAddress ? order.billingAddress.name : '',
-                  (order.billingAddress?.address1 ?? 'N/A') + '\n' + (order.billingAddress?.address2 ?? 'N/A'),
+                  (order.billingAddress?.address1 ?? '') + '\n' + (order.billingAddress?.address2 ?? ''),
                   order.billingAddress ? order.billingAddress.address1 : '',
                   order.billingAddress ? order.billingAddress.address2 : '',
                   order.billingAddress ? order.billingAddress.company : '',
@@ -80,7 +80,7 @@ async function appendDataToSheet(data) {
                   order.billingAddress ? order.billingAddress.country : '',
                   order.billingAddress ? order.billingAddress.phone : '',
                   order.shippingAddress ? order.shippingAddress.name : '',
-                  (order.shippingAddress?.address1 ?? 'N/A') + '\n' + (order.shippingAddress?.address2 ?? 'N/A'),
+                  (order.shippingAddress?.address1 ?? '') + '\n' + (order.shippingAddress?.address2 ?? ''),
                   order.shippingAddress ? order.shippingAddress.address1 : '',
                   order.shippingAddress ? order.shippingAddress.address2 : '',
                   order.shippingAddress ? order.shippingAddress.company : '',
@@ -90,6 +90,7 @@ async function appendDataToSheet(data) {
                   order.shippingAddress ? order.shippingAddress.country : '',
                   order.shippingAddress ? order.shippingAddress.phone : '',
                   order.customer ? order.customer.note : '',
+
                   
                     // Repeat for other nested objects/fields
                   ]
