@@ -79,6 +79,7 @@ async function fetchAndProcessOrder(id) {
                   zip
               }
               currencyCode
+              discountCode
               sourceIdentifier
               customer{
                   emailMarketingConsent{
@@ -253,7 +254,8 @@ const values = [
   order.paymentTerms?.id ?? 'N/A',
   order.paymentTerms?.translatedName ?? 'N/A',
   '',
-  order.sourceIdentifier ?? 'N/A'
+  order.sourceIdentifier ?? 'N/A',
+  order.doscountCode ?? 'N/A'
 ];
   
     }
