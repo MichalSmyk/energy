@@ -45,7 +45,7 @@ async function appendDataToSheet(data) {
                 const row = [
                
                   fulfilmentNumber,
-                    order.name,
+                    order.name, //this is order number 
                     order.email,
                     order.displayFinancialStatus,
                     order.createdAt,
